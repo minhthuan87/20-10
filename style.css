@@ -296,7 +296,7 @@ body {
   border-radius: 15px;
   backdrop-filter: blur(12px);
   background: rgba(255, 255, 255, 0.3);
-  color: #4a004e;
+  color: #65d3c3;
   font-size: 15px;
   font-style: italic;
   box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
@@ -323,7 +323,7 @@ body {
 }
 
 .poem-box.typing {
-  border-right: 2px solid rgba(74, 0, 78, 0.6);
+  border-right: 2px solid rgba(69, 238, 136, 0.6);
   white-space: nowrap;
   overflow: hidden;
   width: 0;
