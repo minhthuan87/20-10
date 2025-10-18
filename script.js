@@ -3,14 +3,12 @@ const spinButton = document.getElementById('spinButton');
 const playerInput = document.getElementById('playerName');
 const playerList = document.getElementById('playerList');
 const resultOverlay = document.getElementById('resultOverlay');
-const resultImage = document.getElementById('resultImage');
 const blindBoxContainer = document.getElementById('blindBoxContainer');
 const spinSound = document.getElementById('spinSound');
 const dropSound = document.getElementById('dropSound');
 
 const rewards = Array.from({ length: 16 }, (_, i) => `images/${i + 1}.png`);
 
-// 🧩 Ánh xạ số → tên
 const rewardNames = {
   "1": "T.HUY",
   "2": "Đ.Anh",
@@ -32,24 +30,34 @@ const rewardNames = {
 
 const rigged = { 
   "Diệu": "images/6.png",
-  "Như": "images/10.png",
-  "Vy": "images/7.png",
+  "Như": "images/7.png",
+  "Vy": "images/8.png",
   "Yến": "images/1.png"
+};
+
+// 🌸 Thơ riêng cho từng người
+const poems = {
+  "1": "Hoa nở một khắc rồi phai,\nGiống như ánh mắt người nay xa vời.",
+  "2": "Trăng treo nghiêng bóng bên sông,\nLòng ai còn nhớ phút nồng năm xưa.",
+  "3": "Cơn gió thoảng qua hàng cây,\nGọi tên ai giữa những ngày đã cũ.",
+  "4": "Một nụ cười xua tan mưa gió,\nĐể lòng ta ấm lại giữa mùa đông.",
+  "5": "Người đến như tia nắng sớm,\nRồi tan vào hoàng hôn chẳng kịp lời.",
+  "6": "Dưới cơn mưa Diệu vẫn cười,\nVì đời có gió có trời có Huân.",
+  "7": "Đạt bước chân xa vời muôn dặm,\nNhưng lòng vẫn giữ chút bình yên.",
+  "8": "Bảo ngồi ngắm lá rơi,\nThấy đời là giấc mộng chơi giữa trời.",
+  "9": "Quyết đi giữa trời đêm tối,\nMang ánh sáng thắp lại niềm tin.",
 };
 
 let usedRewards = [];
 let players = [];
 
-// 🎀 Bóng pastel nằm yên trong bể
 const pastelColors = [
   '#ffd8e8', '#ffc3e1', '#ffb6d6', '#ffe8a3', '#b0d5ff',
   '#a8f5ff', '#c4ffb0', '#ffd5b0', '#e6b0ff', '#b0fff6'
 ];
 
-// Xóa bóng cũ (nếu có)
+// 💫 Vẽ các viên bóng
 ballsContainer.innerHTML = '';
-
-// Tạo hiệu ứng “đầy đặn” bằng nhiều hàng bóng
 for (let row = 0; row < 3; row++) {
   for (let i = 0; i < 8; i++) {
     const ball = document.createElement('div');
@@ -123,11 +131,11 @@ function spin() {
     li.onclick = () => revealReward(chosenReward);
     playerList.appendChild(li);
 
-    showBlindBoxes(chosenReward, li);
+    showBlindBoxes(chosenReward);
   }, 1600);
 }
 
-function showBlindBoxes(chosenReward, listItem) {
+function showBlindBoxes(chosenReward) {
   blindBoxContainer.innerHTML = '';
   blindBoxContainer.style.display = 'flex';
   blindBoxContainer.style.opacity = '1';
@@ -147,7 +155,6 @@ function showBlindBoxes(chosenReward, listItem) {
       blindBoxContainer.innerHTML = '';
       blindBoxContainer.style.display = 'none';
       blindBoxContainer.style.opacity = '0';
-      blindBoxContainer.classList.remove('visible');
       revealReward(chosenReward);
     };
 
@@ -161,36 +168,106 @@ function showBlindBoxes(chosenReward, listItem) {
   }, 50);
 }
 
-// 🌟 Hiển thị phần thưởng
+/* === ✅ PHẦN revealReward ĐÃ ĐƯỢC SỬA === */
 function revealReward(reward) {
   const fileNum = reward.split('/').pop().split('.')[0];
   const nameLabel = rewardNames[fileNum] || fileNum;
+  const poemText = poems[fileNum] || "Khoảnh khắc lặng im, tim khẽ rung rinh.";
 
   resultOverlay.innerHTML = '';
 
   const container = document.createElement('div');
   container.classList.add('image-container');
+  container.style.position = 'relative';
+  container.style.textAlign = 'center';
 
+  // Ảnh nhân vật
   const img = document.createElement('img');
   img.src = reward;
   img.alt = nameLabel;
+  img.style.borderRadius = '20px';
+  img.style.maxHeight = '450px';
+  img.style.objectFit = 'cover';
+  img.style.display = 'block';
+  img.style.margin = '0 auto';
+  img.style.animation = 'zoomIn 0.6s ease forwards';
 
+  // Tên người trúng
   const label = document.createElement('div');
   label.classList.add('player-name');
   label.textContent = nameLabel;
+  label.style.animationDelay = '0.6s';
+
+  // Hộp thơ
+  const poemBox = document.createElement('div');
+  poemBox.classList.add('poem-box');
+  poemBox.style.position = 'absolute';
+  poemBox.style.bottom = '0';
+  poemBox.style.left = '50%';
+  poemBox.style.transform = 'translateX(-50%)';
+  poemBox.style.width = '85%';
+  poemBox.style.padding = '20px';
+  poemBox.style.background = 'rgba(255, 255, 255, 0.25)';
+  poemBox.style.backdropFilter = 'blur(12px)';
+  poemBox.style.borderBottomLeftRadius = '20px';
+  poemBox.style.borderBottomRightRadius = '20px';
+  poemBox.style.textAlign = 'center';
+  poemBox.style.color = '#4a004e';
+  poemBox.style.fontSize = '17px';
+  poemBox.style.fontStyle = 'italic';
+  poemBox.style.opacity = '0';
+  poemBox.style.whiteSpace = 'pre-line';
 
   container.appendChild(img);
   container.appendChild(label);
+  container.appendChild(poemBox);
   resultOverlay.appendChild(container);
 
   resultOverlay.style.display = 'flex';
+  resultOverlay.style.alignItems = 'center';
+  resultOverlay.style.justifyContent = 'center';
+
+  // 💫 Hiện thơ từ từ
   setTimeout(() => {
-    resultOverlay.style.display = 'none';
-    spinButton.disabled = false;
-    playerInput.value = '';
-    playerInput.focus();
-  }, 2500);
+    poemBox.classList.add('show', 'typing');
+    typePoem(poemBox, poemText);
+  }, 1000);
+
+  // ❌ Ảnh không tự tắt — chỉ khi click ra ngoài
+  resultOverlay.onclick = (e) => {
+    if (e.target === resultOverlay) {
+      resultOverlay.style.display = 'none';
+      spinButton.disabled = false;
+      playerInput.value = '';
+      playerInput.focus();
+    }
+  };
+}
+
+// Hiệu ứng gõ thơ
+function typePoem(element, text) {
+  element.textContent = '';
+  let line = 0;
+  let index = 0;
+  const lines = text.split('\n');
+
+  function nextChar() {
+    if (line < lines.length) {
+      if (index < lines[line].length) {
+        element.textContent += lines[line][index];
+        index++;
+        setTimeout(nextChar, 50);
+      } else {
+        element.textContent += '\n';
+        line++;
+        index = 0;
+        setTimeout(nextChar, 400);
+      }
+    }
+  }
+
+  element.style.opacity = '1';
+  nextChar();
 }
 
 spinButton.addEventListener('click', spin);
-
