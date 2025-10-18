@@ -11,7 +11,8 @@ const dropSound = document.getElementById('dropSound');
 const rewards = Array.from({ length: 16 }, (_, i) => `images/${i + 1}.png`);
 const rigged = { 
 "Diệu": "images/6.png",
-"Như": "images/7.png"
+"Như": "images/7.png",
+"Vy": "images/8.png"
 
 
 };
@@ -157,3 +158,4 @@ function revealReward(reward) {
 }
 
 spinButton.addEventListener('click', spin);
+
