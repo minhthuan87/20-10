@@ -1,3 +1,4 @@
+/* === Background & Layout === */
 body {
   background: linear-gradient(180deg, #fff4f8 0%, #ffeaf3 100%);
   font-family: 'Poppins', sans-serif;
@@ -251,6 +252,7 @@ body {
   visibility: hidden !important;
 }
 
+/* === Hộp hình và tên người chơi === */
 .image-container {
   position: relative;
   display: inline-block;
@@ -283,6 +285,49 @@ body {
 @keyframes fadeInDown {
   from { transform: translate(-50%, -20px); opacity: 0; }
   to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+/* === Hộp thơ xuất hiện === */
+.poem-box {
+  position: relative;
+  width: 280px;
+  margin: 15px auto 0;
+  padding: 15px;
+  border-radius: 15px;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.3);
+  color: #4a004e;
+  font-size: 15px;
+  font-style: italic;
+  box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.poem-box.show {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1s; /* thơ hiện sau 1 giây */
+}
+
+
+/* === Hiệu ứng gõ chữ cho thơ === */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+.poem-box.typing {
+  border-right: 2px solid rgba(74, 0, 78, 0.6);
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 3s steps(40, end) forwards, blink 0.8s infinite;
 }
 
 
