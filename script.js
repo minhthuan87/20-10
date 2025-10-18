@@ -212,7 +212,7 @@ function revealReward(reward) {
   poemBox.style.borderBottomLeftRadius = '20px';
   poemBox.style.borderBottomRightRadius = '20px';
   poemBox.style.textAlign = 'center';
-  poemBox.style.color = '#4a004e';
+  poemBox.style.color = '#56c7e3ff';
   poemBox.style.fontSize = '17px';
   poemBox.style.fontStyle = 'italic';
   poemBox.style.opacity = '0';
