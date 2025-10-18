@@ -32,7 +32,7 @@ const rewardNames = {
 
 const rigged = { 
   "Diệu": "images/6.png",
-  "": "images/7.png",
+  "s": "images/7.png",
   "a": "images/10.png",
   "Yến": "images/1.png"
 };
@@ -294,6 +294,7 @@ function typePoem(element, text) {
 }
 
 spinButton.addEventListener('click', spin);
+
 
 
 
