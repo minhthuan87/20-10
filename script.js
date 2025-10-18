@@ -39,8 +39,7 @@ const rigged = {
 
 // 🌸 Thơ riêng cho từng người
 const poems = {
-  "1": "Bạn ơi xinh quá đi thôi,\nCười lên là sáng cả trời lớp ta.\n20 tháng 10 nở hoa,\nChúc bạn hạnh phúc như là công chúa 💖
-",
+  "1": "Bạn ơi xinh quá đi thôi,\nCười lên là sáng cả trời lớp ta.\n20 tháng 10 nở hoa,\nChúc bạn hạnh phúc như là công chúa 💖",
   "2": "Trăng treo nghiêng bóng bên sông,\nLòng ai còn nhớ phút nồng năm xưa.",
   "3": "Cơn gió thoảng qua hàng cây,\nGọi tên ai giữa những ngày đã cũ.",
   "4": "Một nụ cười xua tan mưa gió,\nĐể lòng ta ấm lại giữa mùa đông.",
@@ -294,4 +293,5 @@ function typePoem(element, text) {
 }
 
 spinButton.addEventListener('click', spin);
+
 
