@@ -12,7 +12,7 @@ const WEBHOOK_URL = "https://discord.com/api/webhooks/1429049309621391452/G7P3R6
 const rewards = Array.from({ length: 16 }, (_, i) => `images/${i + 1}.png`);
 
 const rewardNames = {
-  "1": "T.HUY",
+  "1": "T.Huy",
   "2": "Đ.Anh",
   "3": "Pháp",
   "4": "Hiếu",
@@ -293,5 +293,6 @@ function typePoem(element, text) {
 }
 
 spinButton.addEventListener('click', spin);
+
 
 
