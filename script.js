@@ -45,7 +45,7 @@ const poems = {
   "4": "Một nụ cười xua tan mưa gió,\nĐể lòng ta ấm lại giữa mùa đông.",
   "5": "Ngày bồi hồi , trưa hấp hối,\nChiều ngược lối , tối yêu em.",
   "6": "Dưới cơn mưa Diệu vẫn cười,\nVì đời có gió có trời có Huân.",
-  "7": "Đạt bước chân xa vời muôn dặm,\nNhưng lòng vẫn giữ chút bình yên.",
+  "7": "Đi học anh mang bút nhưng ko viết,\nMà là vẽ lên chuyện tình của đôi ta",
   "8": "Bảo ngồi ngắm lá rơi,\nThấy đời là giấc mộng chơi giữa trời.",
   "9": "Quyết đi giữa trời đêm tối,\nMang ánh sáng thắp lại niềm tin.",
   "10": "Nhật ngắm trăng giữa đêm khuya,\nLòng chợt nhớ về em.",
@@ -294,6 +294,7 @@ function typePoem(element, text) {
 }
 
 spinButton.addEventListener('click', spin);
+
 
 
 
