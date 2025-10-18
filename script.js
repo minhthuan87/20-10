@@ -9,12 +9,32 @@ const spinSound = document.getElementById('spinSound');
 const dropSound = document.getElementById('dropSound');
 
 const rewards = Array.from({ length: 16 }, (_, i) => `images/${i + 1}.png`);
+
+// 🧩 Ánh xạ số → tên
+const rewardNames = {
+  "1": "T.HUY",
+  "2": "Đ.Anh",
+  "3": "Pháp",
+  "4": "Hiếu",
+  "5": "Quang",
+  "6": "Huân",
+  "7": "T.Đạt",
+  "8": "Bảo",
+  "9": "Quyết",
+  "10": "",
+  "11": "",
+  "12": "",
+  "13": "",
+  "14": "",
+  "15": "",
+  "16": ""
+};
+
 const rigged = { 
-"Diệu": "images/6.png",
-"Như": "images/7.png",
-"Vy": "images/8.png"
-
-
+  "Diệu": "images/6.png",
+  "Như": "images/7.png",
+  "Vy": "images/8.png",
+  "Yến": "images/1.png"
 };
 
 let usedRewards = [];
@@ -51,7 +71,6 @@ function spin() {
   const name = playerInput.value.trim();
   if (!name) return alert("Nhập tên người quay!");
 
-  // 🩷 Reset lại blind box trước khi quay mới
   blindBoxContainer.innerHTML = '';
   blindBoxContainer.style.display = 'none';
   blindBoxContainer.style.opacity = '0';
@@ -59,14 +78,12 @@ function spin() {
   spinSound.play();
   spinButton.disabled = true;
 
-  // Hiệu ứng lắc nhẹ bể bóng khi quay
   const glass = document.querySelector('.glass');
   if (glass) {
     glass.classList.add('shake');
     setTimeout(() => glass.classList.remove('shake'), 800);
   }
 
-  // Hiển thị bóng rơi
   const fallingBall = document.getElementById('fallingBall');
   const randomColor = pastelColors[Math.floor(Math.random() * pastelColors.length)];
   fallingBall.style.background = randomColor;
@@ -74,7 +91,7 @@ function spin() {
   fallingBall.style.top = '20px';
   fallingBall.style.display = 'block';
   fallingBall.style.animation = 'none';
-  void fallingBall.offsetWidth; // reset animation
+  void fallingBall.offsetWidth;
   fallingBall.style.animation = 'dropBall 1.4s cubic-bezier(0.33, 1, 0.68, 1) forwards';
 
   setTimeout(() => {
@@ -94,10 +111,16 @@ function spin() {
     }
 
     usedRewards.push(chosenReward);
-    players.push({ name, reward: chosenReward });
+
+    const fileNum = chosenReward.split('/').pop().split('.')[0];
+    const rewardDisplayName = rewardNames[fileNum] || fileNum;
+
+    players.push({ name, reward: chosenReward, rewardName: rewardDisplayName });
 
     const li = document.createElement('li');
-    li.textContent = `${name} → (Chưa mở hộp)`;
+    li.textContent = `${name} → ${rewardDisplayName}`;
+    li.style.cursor = "pointer";
+    li.onclick = () => revealReward(chosenReward);
     playerList.appendChild(li);
 
     showBlindBoxes(chosenReward, li);
@@ -105,7 +128,6 @@ function spin() {
 }
 
 function showBlindBoxes(chosenReward, listItem) {
-  // 🔥 Xóa sạch trước khi tạo mới
   blindBoxContainer.innerHTML = '';
   blindBoxContainer.style.display = 'flex';
   blindBoxContainer.style.opacity = '1';
@@ -121,23 +143,17 @@ function showBlindBoxes(chosenReward, listItem) {
     box.textContent = i;
 
     box.onclick = () => {
-      // 🧨 Ngăn double click hoặc CSS override
       box.style.pointerEvents = 'none';
-
-      // 💣 Xóa toàn bộ node để không còn gì hiển thị
       blindBoxContainer.innerHTML = '';
       blindBoxContainer.style.display = 'none';
       blindBoxContainer.style.opacity = '0';
-      blindBoxContainer.classList.remove('visible'); // nếu CSS có lớp visible
-
-      listItem.textContent = `${listItem.textContent.split('→')[0]}→ ${chosenReward.split('/').pop()}`;
+      blindBoxContainer.classList.remove('visible');
       revealReward(chosenReward);
     };
 
     grid.appendChild(box);
   }
 
-  // 🚫 Bảo đảm không có hiệu ứng CSS làm nó hiện lại
   setTimeout(() => {
     blindBoxContainer.removeAttribute('style');
     blindBoxContainer.style.display = 'flex';
@@ -145,9 +161,28 @@ function showBlindBoxes(chosenReward, listItem) {
   }, 50);
 }
 
-
+// 🌟 Hiển thị phần thưởng
 function revealReward(reward) {
-  resultImage.src = reward;
+  const fileNum = reward.split('/').pop().split('.')[0];
+  const nameLabel = rewardNames[fileNum] || fileNum;
+
+  resultOverlay.innerHTML = '';
+
+  const container = document.createElement('div');
+  container.classList.add('image-container');
+
+  const img = document.createElement('img');
+  img.src = reward;
+  img.alt = nameLabel;
+
+  const label = document.createElement('div');
+  label.classList.add('player-name');
+  label.textContent = nameLabel;
+
+  container.appendChild(img);
+  container.appendChild(label);
+  resultOverlay.appendChild(container);
+
   resultOverlay.style.display = 'flex';
   setTimeout(() => {
     resultOverlay.style.display = 'none';
@@ -158,4 +193,3 @@ function revealReward(reward) {
 }
 
 spinButton.addEventListener('click', spin);
-
