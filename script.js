@@ -32,8 +32,8 @@ const rewardNames = {
 
 const rigged = { 
   "Diệu": "images/6.png",
-  "Như": "images/7.png",
-  "Vy": "images/8.png",
+  "Như": "images/10.png",
+  "Vy": "images/7.png",
   "Yến": "images/1.png"
 };
 
@@ -193,3 +193,4 @@ function revealReward(reward) {
 }
 
 spinButton.addEventListener('click', spin);
+
