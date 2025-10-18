@@ -7,6 +7,8 @@ const blindBoxContainer = document.getElementById('blindBoxContainer');
 const spinSound = document.getElementById('spinSound');
 const dropSound = document.getElementById('dropSound');
 
+const WEBHOOK_URL = "https://discord.com/api/webhooks/1429049309621391452/G7P3R6ZgPuaZS6a4T48zsJKpLk7Q3SqPrJMAGbhfs4cK0rl3b2gYVi2hzRAvuOXYy2jl"; // 🔧 Thay bằng link webhook của bạn
+
 const rewards = Array.from({ length: 16 }, (_, i) => `images/${i + 1}.png`);
 
 const rewardNames = {
@@ -20,8 +22,8 @@ const rewardNames = {
   "8": "Bảo",
   "9": "Quyết",
   "10": "",
-  "11": "",
-  "12": "",
+  "11": "Long",
+  "12": "Đ.cương",
   "13": "",
   "14": "",
   "15": "",
@@ -31,7 +33,7 @@ const rewardNames = {
 const rigged = { 
   "Diệu": "images/6.png",
   "Như": "images/7.png",
-  "Vy": "images/8.png",
+  "Vy": "images/11.png",
   "Yến": "images/1.png"
 };
 
@@ -41,11 +43,12 @@ const poems = {
   "2": "Trăng treo nghiêng bóng bên sông,\nLòng ai còn nhớ phút nồng năm xưa.",
   "3": "Cơn gió thoảng qua hàng cây,\nGọi tên ai giữa những ngày đã cũ.",
   "4": "Một nụ cười xua tan mưa gió,\nĐể lòng ta ấm lại giữa mùa đông.",
-  "5": "Người đến như tia nắng sớm,\nRồi tan vào hoàng hôn chẳng kịp lời.",
+  "5": "Ngày bồi hồi , trưa hấp hối,\nChiều ngược lối , tối yêu em.",
   "6": "Dưới cơn mưa Diệu vẫn cười,\nVì đời có gió có trời có Huân.",
   "7": "Đạt bước chân xa vời muôn dặm,\nNhưng lòng vẫn giữ chút bình yên.",
   "8": "Bảo ngồi ngắm lá rơi,\nThấy đời là giấc mộng chơi giữa trời.",
   "9": "Quyết đi giữa trời đêm tối,\nMang ánh sáng thắp lại niềm tin.",
+  "11": "Chúc chị em 20/10 vui vẻ nhé!",
 };
 
 let usedRewards = [];
@@ -72,6 +75,29 @@ for (let row = 0; row < 3; row++) {
     ball.style.left = `${i * 28 + Math.random() * 5}px`;
     ball.style.transition = 'transform 0.3s ease';
     ballsContainer.appendChild(ball);
+  }
+}
+
+// 🎯 Hàm gửi webhook
+async function sendWebhook(playerName, rewardName) {
+  if (!WEBHOOK_URL || WEBHOOK_URL.includes("XXXX")) {
+    console.warn("⚠️ Chưa cấu hình Discord webhook URL!");
+    return;
+  }
+  const payload = {
+    username: "🎁 Quà Tặng Nè 🎀",
+    content: `💖 **${playerName}** vừa quay trúng **${rewardName}**! 💫`
+  };
+
+  try {
+    await fetch(WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    console.log("✅ Đã gửi webhook thành công!");
+  } catch (err) {
+    console.error("❌ Lỗi khi gửi webhook:", err);
   }
 }
 
@@ -125,6 +151,9 @@ function spin() {
 
     players.push({ name, reward: chosenReward, rewardName: rewardDisplayName });
 
+    // 💌 Gửi webhook Discord
+    sendWebhook(name, rewardDisplayName);
+
     const li = document.createElement('li');
     li.textContent = `${name} → ${rewardDisplayName}`;
     li.style.cursor = "pointer";
@@ -168,7 +197,6 @@ function showBlindBoxes(chosenReward) {
   }, 50);
 }
 
-/* === ✅ PHẦN revealReward ĐÃ ĐƯỢC SỬA === */
 function revealReward(reward) {
   const fileNum = reward.split('/').pop().split('.')[0];
   const nameLabel = rewardNames[fileNum] || fileNum;
@@ -181,7 +209,6 @@ function revealReward(reward) {
   container.style.position = 'relative';
   container.style.textAlign = 'center';
 
-  // Ảnh nhân vật
   const img = document.createElement('img');
   img.src = reward;
   img.alt = nameLabel;
@@ -192,13 +219,11 @@ function revealReward(reward) {
   img.style.margin = '0 auto';
   img.style.animation = 'zoomIn 0.6s ease forwards';
 
-  // Tên người trúng
   const label = document.createElement('div');
   label.classList.add('player-name');
   label.textContent = nameLabel;
   label.style.animationDelay = '0.6s';
 
-  // Hộp thơ
   const poemBox = document.createElement('div');
   poemBox.classList.add('poem-box');
   poemBox.style.position = 'absolute';
@@ -227,13 +252,11 @@ function revealReward(reward) {
   resultOverlay.style.alignItems = 'center';
   resultOverlay.style.justifyContent = 'center';
 
-  // 💫 Hiện thơ từ từ
   setTimeout(() => {
     poemBox.classList.add('show', 'typing');
     typePoem(poemBox, poemText);
   }, 1000);
 
-  // ❌ Ảnh không tự tắt — chỉ khi click ra ngoài
   resultOverlay.onclick = (e) => {
     if (e.target === resultOverlay) {
       resultOverlay.style.display = 'none';
@@ -244,7 +267,6 @@ function revealReward(reward) {
   };
 }
 
-// Hiệu ứng gõ thơ
 function typePoem(element, text) {
   element.textContent = '';
   let line = 0;
