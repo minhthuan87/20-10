@@ -48,7 +48,7 @@ const poems = {
   "7": "Đạt bước chân xa vời muôn dặm,\nNhưng lòng vẫn giữ chút bình yên.",
   "8": "Bảo ngồi ngắm lá rơi,\nThấy đời là giấc mộng chơi giữa trời.",
   "9": "Quyết đi giữa trời đêm tối,\nMang ánh sáng thắp lại niềm tin.",
-  "10": "chưa có lời chúc"
+  "10": "Nhật ngắm trăng giữa đêm khuya,\nLòng chợt nhớ về em.",
   "11": "Chúc chị em 20/10 vui vẻ nhé!",
 };
 
@@ -294,6 +294,7 @@ function typePoem(element, text) {
 }
 
 spinButton.addEventListener('click', spin);
+
 
 
 
