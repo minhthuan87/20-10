@@ -32,14 +32,14 @@ const rewardNames = {
 
 const rigged = { 
   "Diệu": "images/6.png",
-  "s": "images/7.png",
-  "a": "images/10.png",
-  "Yến": "images/1.png"
+  "Vy": "images/7.png",
+  "Yến": "images/10.png",
+  "Như": "images/1.png"
 };
 
 // 🌸 Thơ riêng cho từng người
 const poems = {
-  "1": "Bạn ơi xinh quá đi thôi,\nCười lên là sáng cả trời lớp ta.\n20 tháng 10 nở hoa,\nChúc bạn hạnh phúc như là công chúa 💖",
+  "1": "Cầu bay theo gió, lòng anh bay theo,\nEm vung vợt nhẹ — tim anh khẽ reo.",
   "2": "Trăng treo nghiêng bóng bên sông,\nLòng ai còn nhớ phút nồng năm xưa.",
   "3": "Cơn gió thoảng qua hàng cây,\nGọi tên ai giữa những ngày đã cũ.",
   "4": "Một nụ cười xua tan mưa gió,\nĐể lòng ta ấm lại giữa mùa đông.",
@@ -294,6 +294,7 @@ function typePoem(element, text) {
 }
 
 spinButton.addEventListener('click', spin);
+
 
 
 
