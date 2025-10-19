@@ -9,7 +9,7 @@ const dropSound = document.getElementById('dropSound');
 
 const WEBHOOK_URL = "https://discord.com/api/webhooks/1429299860057886800/th8xdmx75ghLFKjaSL9RLeN7TLzEjzHYD6XhRo34p7ZvSPfiv3bzzS8IZfTZzQMcMFNN"; // 🔧 Thay bằng link webhook của bạn
 
-const rewards = Array.from({ length: 16 }, (_, i) => `images/${i + 1}.png`);
+const rewards = Array.from({ length: 17 }, (_, i) => `images/${i + 1}.png`);
 
 const rewardNames = {
   "1": "T.HUY",
@@ -26,16 +26,13 @@ const rewardNames = {
   "12": "Đ.cương",
   "13": "V.Cường",
   "14": "Mì Cay 50k",
-  "15": "",
-  "16": ""
+  "15": "Huy Gián",
+  "16": "Hiếu CUTE",
+  "17": "Long nghiêm túc"
 };
 
 const rigged = { 
-  
-  "Diệu": "images/6.png",
-  "Như": "images/1.png",
-  "Phương Anh": "images/14.png"
-  
+  "Như": "images/1.png"
 };
 
 // 🌸 Thơ riêng cho từng người
@@ -53,7 +50,10 @@ const poems = {
   "11": "Chúc chị em 20/10 vui vẻ nhé!",//long
   "12": "chưa có lời chúc :))",//d.cuong
   "13": "chưa có lời chúc :))",//v.cuong
-  "14": "Chúc bạn 20/10 vui vẻ,\nxinh đẹp và hạnh phúc nhé! 💖",
+  "14": "Chúc bạn 20/10 vui vẻ,\nxinh đẹp và hạnh phúc nhé! 💖",//my cay
+  "15": "chưa có lời chúc :))",//huy gian
+  "16": "chưa có lời chúc :))",//hieu cute
+  "17": "chưa có lời chúc :))"//long nghiem tuc
 };
 
 let usedRewards = [];
@@ -298,5 +298,3 @@ function typePoem(element, text) {
 }
 
 spinButton.addEventListener('click', spin);
-
-
