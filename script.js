@@ -7,7 +7,7 @@ const blindBoxContainer = document.getElementById('blindBoxContainer');
 const spinSound = document.getElementById('spinSound');
 const dropSound = document.getElementById('dropSound');
 
-const WEBHOOK_URL = "https://discord.com/api/webhooks/1429301070814773379/XGFYftZKVatiClzKp1T05pyDkO0yb9FSLXBYBwl2b7dpsrA1K5f1zdAr218v6JKgnlKC"; // 🔧 Thay bằng link webhook của bạn
+const WEBHOOK_URL = "https://discord.com/api/webhooks/1429299860057886800/th8xdmx75ghLFKjaSL9RLeN7TLzEjzHYD6XhRo34p7ZvSPfiv3bzzS8IZfTZzQMcMFNN"; // 🔧 Thay bằng link webhook của bạn
 
 const rewards = Array.from({ length: 16 }, (_, i) => `images/${i + 1}.png`);
 
@@ -298,4 +298,5 @@ function typePoem(element, text) {
 }
 
 spinButton.addEventListener('click', spin);
+
 
