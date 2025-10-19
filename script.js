@@ -7,12 +7,12 @@ const blindBoxContainer = document.getElementById('blindBoxContainer');
 const spinSound = document.getElementById('spinSound');
 const dropSound = document.getElementById('dropSound');
 
-const WEBHOOK_URL = "https://discord.com/api/webhooks/1429049309621391452/G7P3R6ZgPuaZS6a4T48zsJKpLk7Q3SqPrJMAGbhfs4cK0rl3b2gYVi2hzRAvuOXYy2jl"; // 🔧 Thay bằng link webhook của bạn
+const WEBHOOK_URL = "https://discord.com/api/webhooks/1429299860057886800/th8xdmx75ghLFKjaSL9RLeN7TLzEjzHYD6XhRo34p7ZvSPfiv3bzzS8IZfTZzQMcMFNN"; // 🔧 Thay bằng link webhook của bạn
 
 const rewards = Array.from({ length: 16 }, (_, i) => `images/${i + 1}.png`);
 
 const rewardNames = {
-  "1": "T.Huy",
+  "1": "T.HUY",
   "2": "Đ.Anh",
   "3": "Pháp",
   "4": "Hiếu",
@@ -24,32 +24,36 @@ const rewardNames = {
   "10": "Nhật",
   "11": "Long",
   "12": "Đ.cương",
-  "13": "",
-  "14": "",
+  "13": "V.Cường",
+  "14": "Mì Cay 50k",
   "15": "",
   "16": ""
 };
 
 const rigged = { 
+  
   "Diệu": "images/6.png",
-  "Vy": "images/7.png",
-  "Yến": "images/10.png",
-  "Như": "images/1.png"
+  "Như": "images/1.png",
+  "Phương Anh": "images/14.png"
+  
 };
 
 // 🌸 Thơ riêng cho từng người
 const poems = {
-  "1": "Cầu bay theo gió, lòng anh bay theo,\nEm vung vợt nhẹ — tim anh khẽ reo.",
-  "2": "Trăng treo nghiêng bóng bên sông,\nLòng ai còn nhớ phút nồng năm xưa.",
-  "3": "Cơn gió thoảng qua hàng cây,\nGọi tên ai giữa những ngày đã cũ.",
-  "4": "Một nụ cười xua tan mưa gió,\nĐể lòng ta ấm lại giữa mùa đông.",
-  "5": "Ngày bồi hồi , trưa hấp hối,\nChiều ngược lối , tối yêu em.",
-  "6": "Dưới cơn mưa Diệu vẫn cười,\nVì đời có gió có trời có Huân.",
-  "7": "Đi học anh mang bút nhưng ko viết,\nMà là vẽ lên chuyện tình của đôi ta",
-  "8": "Bảo ngồi ngắm lá rơi,\nThấy đời là giấc mộng chơi giữa trời.",
-  "9": "Quyết đi giữa trời đêm tối,\nMang ánh sáng thắp lại niềm tin.",
-  "10": "Nhật ngắm trăng giữa đêm khuya,\nLòng chợt nhớ về em.",
-  "11": "Chúc chị em 20/10 vui vẻ nhé!",
+  "1": "Cầu bay theo gió, lòng anh bay theo,\nEm vung vợt nhẹ — tim anh khẽ reo.", //huy dung
+  "2": "chưa có lời chúc :))",//d.anh
+  "3": "chưa có lời chúc :))",//phap
+  "4": "chưa có lời chúc :))",//hieu
+  "5": "chưa có lời chúc :))",//quang
+  "6": "Dưới cơn mưa Anh vẫn cười,\nVì đời có gió có trời có Em.",//huan
+  "7": "Đêm khuya tỉnh giấc mơ màn,\nNhớ nàng sục mãi cây hàng ốm o.",//t.dat
+  "8": "Bảo ngồi ngắm lá vàng rơi,\nThấy đời là thấy em xinh vãi ò.",//bao
+  "9": "Anh đi giữa trời đêm tối,\nMang ánh sáng thắp lại tim em.",//quyet
+  "10": "Ngắm trăng giữa đêm khuya,\nLòng chợt nhớ về những ngày yêu em.",//nhat
+  "11": "Chúc chị em 20/10 vui vẻ nhé!",//long
+  "12": "chưa có lời chúc :))",//d.cuong
+  "13": "chưa có lời chúc :))",//v.cuong
+  "14": "Chúc bạn 20/10 vui vẻ,\nxinh đẹp và hạnh phúc nhé! 💖",
 };
 
 let usedRewards = [];
@@ -234,11 +238,11 @@ function revealReward(reward) {
   poemBox.style.width = '85%';
   poemBox.style.padding = '20px';
   poemBox.style.background = 'rgba(255, 255, 255, 0.25)';
-  poemBox.style.backdropFilter = 'blur(12px)';
+  poemBox.style.backdropFilter = 'blur(10px)';
   poemBox.style.borderBottomLeftRadius = '20px';
   poemBox.style.borderBottomRightRadius = '20px';
   poemBox.style.textAlign = 'center';
-  poemBox.style.color = '#56c7e3ff';
+  poemBox.style.color = '#ff0000ff';
   poemBox.style.fontSize = '17px';
   poemBox.style.fontStyle = 'italic';
   poemBox.style.opacity = '0';
@@ -294,12 +298,3 @@ function typePoem(element, text) {
 }
 
 spinButton.addEventListener('click', spin);
-
-
-
-
-
-
-
-
-
