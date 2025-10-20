@@ -40,22 +40,22 @@ const rigged = {
 // 🌸 Thơ riêng cho từng người
 const poems = {
   "1": "Cầu bay theo gió, lòng anh bay theo,\nEm vung vợt nhẹ — tim anh khẽ reo.", //huy dung
-  "2": "chưa có lời chúc :))",//d.anh
-  "3": "chưa có lời chúc :))",//phap
-  "4": "chưa có lời chúc :))",//hieu
-  "5": "chưa có lời chúc :))",//quang
+  "2": "chưa có lời chúc :>",//d.anh
+  "3": "chưa có lời chúc :>",//phap
+  "4": "chưa có lời chúc :>",//hieu
+  "5": "Ngày bồi hồi , trưa hấp hối\nChiều ngược lối , tối yêu em",//quang
   "6": "Dưới cơn mưa Huân vẫn cười,\nVì đời có gió có trời có Em.",//huan
   "7": "Đêm khuya tỉnh giấc mơ màn,\nNhớ nàng sục mãi cây hàng ốm o.",//t.dat
   "8": "Bảo ngồi ngắm lá vàng rơi,\nThấy đời là thấy em xinh vãi ò.",//bao
   "9": "Anh đi giữa trời đêm tối,\nMang ánh sáng thắp lại tim em.",//quyet
   "10": "Ngắm trăng giữa đêm khuya,\nLòng chợt nhớ về những ngày yêu em.",//nhat
   "11": "Chúc chị em 20/10 vui vẻ nhé!",//long
-  "12": "chưa có lời chúc :))",//d.cuong
-  "13": "chưa có lời chúc :))",//v.cuong
+  "12": "chưa có lời chúc :>",//d.cuong
+  "13": "chưa có lời chúc :>",//v.cuong
   "14": "Chúc bạn 20/10 vui vẻ,\nxinh đẹp và hạnh phúc nhé! 💖",//my cay
-  "15": "chưa có lời chúc :))",//huy gian
-  "16": "chưa có lời chúc :))",//hieu cute
-  "17": "chưa có lời chúc :))"//long nghiem tuc
+  "15": "chưa có lời chúc :>",//huy gian
+  "16": "chưa có lời chúc :>",//hieu cute
+  "17": "chưa có lời chúc :>"//long nghiem tuc
 };
 
 let usedRewards = [];
@@ -300,5 +300,6 @@ function typePoem(element, text) {
 }
 
 spinButton.addEventListener('click', spin);
+
 
 
