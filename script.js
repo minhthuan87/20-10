@@ -28,12 +28,13 @@ const rewardNames = {
   "14": "Mì Cay 50k",
   "15": "Huy Gián",
   "16": "Hiếu CUTE",
-  "17": "Long nghiêm túc"
+  "17": "Long dễ thương"
 };
 
 const rigged = { 
   "Như": "images/1.png"
   "My" : "images/10.png"
+  ""
 };
 
 // 🌸 Thơ riêng cho từng người
@@ -43,7 +44,7 @@ const poems = {
   "3": "chưa có lời chúc :))",//phap
   "4": "chưa có lời chúc :))",//hieu
   "5": "chưa có lời chúc :))",//quang
-  "6": "Dưới cơn mưa Anh vẫn cười,\nVì đời có gió có trời có Em.",//huan
+  "6": "Dưới cơn mưa Huân vẫn cười,\nVì đời có gió có trời có Em.",//huan
   "7": "Đêm khuya tỉnh giấc mơ màn,\nNhớ nàng sục mãi cây hàng ốm o.",//t.dat
   "8": "Bảo ngồi ngắm lá vàng rơi,\nThấy đời là thấy em xinh vãi ò.",//bao
   "9": "Anh đi giữa trời đêm tối,\nMang ánh sáng thắp lại tim em.",//quyet
@@ -299,4 +300,5 @@ function typePoem(element, text) {
 }
 
 spinButton.addEventListener('click', spin);
+
 
