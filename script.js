@@ -32,8 +32,8 @@ const rewardNames = {
 };
 
 const rigged = { 
-  "Như": "images/1.png"
-  "My": "images/10.png"
+  "Như": "images/1.png",
+  "My": "images/10.png",
   "hehe": "images/14.png"
 };
 
@@ -300,6 +300,7 @@ function typePoem(element, text) {
 }
 
 spinButton.addEventListener('click', spin);
+
 
 
 
