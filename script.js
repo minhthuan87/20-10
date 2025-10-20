@@ -34,7 +34,7 @@ const rewardNames = {
 const rigged = { 
   "Như": "images/1.png",
   "My": "images/10.png",
-  "hehe": "images/14.png"
+  "M.phương": "images/11.png"
 };
 
 // 🌸 Thơ riêng cho từng người
@@ -300,6 +300,7 @@ function typePoem(element, text) {
 }
 
 spinButton.addEventListener('click', spin);
+
 
 
 
