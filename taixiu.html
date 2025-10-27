@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎲 Tài Xỉu - Sunwin Style 🎲</title>
+  <link rel="stylesheet" href="taixiu.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="background-animation"></div>
+  
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">🎲</span>
+        <span class="logo-text">TÀI XỈU</span>
+      </div>
+      <div class="balance-display">
+        <span class="balance-label">Số dư:</span>
+        <span class="balance-amount" id="balance">1,000,000</span>
+        <span class="currency">đ</span>
+      </div>
+    </header>
+
+    <!-- Main Game Area -->
+    <div class="game-area">
+      <!-- Dice Container -->
+      <div class="dice-container" id="diceContainer">
+        <div class="dice-bowl">
+          <div class="dice" id="dice1">
+            <div class="face front"></div>
+            <div class="face back"></div>
+            <div class="face right"></div>
+            <div class="face left"></div>
+            <div class="face top"></div>
+            <div class="face bottom"></div>
+          </div>
+          <div class="dice" id="dice2">
+            <div class="face front"></div>
+            <div class="face back"></div>
+            <div class="face right"></div>
+            <div class="face left"></div>
+            <div class="face top"></div>
+            <div class="face bottom"></div>
+          </div>
+          <div class="dice" id="dice3">
+            <div class="face front"></div>
+            <div class="face back"></div>
+            <div class="face right"></div>
+            <div class="face left"></div>
+            <div class="face top"></div>
+            <div class="face bottom"></div>
+          </div>
+        </div>
+        <div class="result-display" id="resultDisplay">
+          <div class="result-sum" id="resultSum">--</div>
+          <div class="result-type" id="resultType">Chờ đặt cược</div>
+        </div>
+      </div>
+
+      <!-- Betting Area -->
+      <div class="betting-area">
+        <div class="betting-grid">
+          <!-- Tài -->
+          <div class="bet-option tai" data-bet="tai">
+            <div class="bet-label">TÀI</div>
+            <div class="bet-range">11 - 18</div>
+            <div class="bet-odds">1:1</div>
+            <div class="bet-amount" id="betAmountTai">0đ</div>
+          </div>
+
+          <!-- Xỉu -->
+          <div class="bet-option xiu" data-bet="xiu">
+            <div class="bet-label">XỈU</div>
+            <div class="bet-range">3 - 10</div>
+            <div class="bet-odds">1:1</div>
+            <div class="bet-amount" id="betAmountXiu">0đ</div>
+          </div>
+
+          <!-- Chẵn -->
+          <div class="bet-option chan" data-bet="chan">
+            <div class="bet-label">CHẴN</div>
+            <div class="bet-range">4,6,8,10,12,14,16,18</div>
+            <div class="bet-odds">1:1</div>
+            <div class="bet-amount" id="betAmountChan">0đ</div>
+          </div>
+
+          <!-- Lẻ -->
+          <div class="bet-option le" data-bet="le">
+            <div class="bet-label">LẺ</div>
+            <div class="bet-range">3,5,7,9,11,13,15,17</div>
+            <div class="bet-odds">1:1</div>
+            <div class="bet-amount" id="betAmountLe">0đ</div>
+          </div>
+        </div>
+
+        <!-- Chip Selection -->
+        <div class="chip-selection">
+          <div class="chip-label">Chọn mệnh giá:</div>
+          <div class="chips">
+            <button class="chip" data-value="10000">10K</button>
+            <button class="chip" data-value="50000">50K</button>
+            <button class="chip active" data-value="100000">100K</button>
+            <button class="chip" data-value="500000">500K</button>
+            <button class="chip" data-value="1000000">1M</button>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+          <button class="btn btn-clear" id="btnClear">Xóa cược</button>
+          <button class="btn btn-roll" id="btnRoll">LẮC XÚC XẮC</button>
+          <button class="btn btn-rebet" id="btnRebet">Đặt lại</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- History Panel -->
+    <div class="history-panel">
+      <div class="history-header">
+        <span>📊 Lịch sử</span>
+        <button class="btn-history-clear" id="btnHistoryClear">Xóa</button>
+      </div>
+      <div class="history-list" id="historyList">
+        <div class="history-empty">Chưa có lịch sử</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Win/Loss Notification -->
+  <div class="notification" id="notification">
+    <div class="notification-content">
+      <div class="notification-icon" id="notificationIcon">🎉</div>
+      <div class="notification-text" id="notificationText">Bạn thắng!</div>
+      <div class="notification-amount" id="notificationAmount">+100,000đ</div>
+    </div>
+  </div>
+
+  <script src="taixiu.js"></script>
+</body>
+</html>
